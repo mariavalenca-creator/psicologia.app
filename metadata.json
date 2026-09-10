@@ -1,0 +1,6 @@
+{
+  "name": "Acolher & Aprender - Psicologia Educacional",
+  "description": "Sistema psicopedagógico para mapeamento de dificuldades de aprendizagem, rastreio precoce de sinais de sofrimento emocional e prevenção ao suicídio em ambiente escolar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
