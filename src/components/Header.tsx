@@ -18,6 +18,7 @@ interface HeaderProps {
   onSelectTab: (tab: 'dashboard' | 'form' | 'activities' | 'interventions' | 'crisis') => void;
   onOpenNewStudent: () => void;
   onOpenCrisisModal: () => void;
+  onOpenSplash?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -26,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectTab,
   onOpenNewStudent,
   onOpenCrisisModal,
+  onOpenSplash,
 }) => {
   const criticalCount = students.filter(s => s.calculatedRisk === 'critico' || s.calculatedRisk === 'alto').length;
   const moderateCount = students.filter(s => s.calculatedRisk === 'moderado').length;
@@ -96,6 +98,18 @@ export const Header: React.FC<HeaderProps> = ({
               <AlertTriangle className="w-4 h-4 text-amber-600" />
               <span>{moderateCount} com Dificuldade Moderada</span>
             </div>
+          )}
+
+          {onOpenSplash && (
+            <button
+              onClick={onOpenSplash}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-red-500/10 via-rose-500/10 to-blue-500/10 border border-red-200 text-blue-950 hover:text-red-600 hover:border-red-300 font-bold text-xs sm:text-sm transition-all hover:scale-[1.02] shadow-xs active:scale-[0.98]"
+              title="Apresentação animada de abertura"
+            >
+              <Sparkles className="w-4 h-4 text-red-500" />
+              <span className="hidden sm:inline">Ver Abertura</span>
+              <span className="sm:hidden">Intro</span>
+            </button>
           )}
 
           <button

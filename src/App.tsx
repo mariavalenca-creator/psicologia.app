@@ -6,6 +6,7 @@ import { EarlyWarningFormModal } from './components/EarlyWarningFormModal';
 import { DiagnosticActivitiesView } from './components/DiagnosticActivitiesView';
 import { InterventionsGuideView } from './components/InterventionsGuideView';
 import { CrisisProtocolModal } from './components/CrisisProtocolModal';
+import { SplashScreen } from './components/SplashScreen';
 import { Student } from './types';
 import { INITIAL_STUDENTS } from './data/mockData';
 import { 
@@ -39,6 +40,7 @@ export default function App() {
   const [studentToEdit, setStudentToEdit] = useState<Student | null>(null);
   const [isCrisisModalOpen, setIsCrisisModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showSplash, setShowSplash] = useState(true);
 
   // Sync to localStorage
   useEffect(() => {
@@ -159,6 +161,7 @@ export default function App() {
         }}
         onOpenNewStudent={handleOpenNewStudent}
         onOpenCrisisModal={() => setIsCrisisModalOpen(true)}
+        onOpenSplash={() => setShowSplash(true)}
       />
 
       {/* Main Content Area */}
@@ -234,6 +237,12 @@ export default function App() {
       <CrisisProtocolModal
         isOpen={isCrisisModalOpen}
         onClose={() => setIsCrisisModalOpen(false)}
+      />
+
+      {/* Animated Opening Screen */}
+      <SplashScreen
+        isOpen={showSplash}
+        onEnter={() => setShowSplash(false)}
       />
 
       {/* Footer */}
